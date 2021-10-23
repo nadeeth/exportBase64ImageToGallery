@@ -13,13 +13,6 @@ public class ExportBase64ImageToGalleryPlugin: CAPPlugin {
     private let implementation = ExportBase64ImageToGallery()
     private var globalCall: CAPPluginCall = CAPPluginCall()
 
-    @objc func echo(_ call: CAPPluginCall) {
-        let value = call.getString("value") ?? ""
-        call.resolve([
-            "value": implementation.echo(value)
-        ])
-    }
-
     @objc override public func checkPermissions(_ call: CAPPluginCall) {
         let galleryState: String
 

@@ -5,10 +5,6 @@ import type { ExportBase64ImageToGalleryPlugin, PermissionStatus } from './defin
 export class ExportBase64ImageToGalleryWeb
   extends WebPlugin
   implements ExportBase64ImageToGalleryPlugin {
-  async echo(options: { value: string }): Promise<{ value: string }> {
-    console.log('ECHO', options);
-    return options;
-  }
   async checkPermissions(): Promise<PermissionStatus> {
     return new Promise((resolve, _reject) => resolve);
   }
