@@ -78,3 +78,12 @@ exportImageToGallery(options: { data: string; }) => any
 | **`error`**   | <code>string</code>  |
 
 </docgen-api>
+
+## iOS
+Add Photo Libarary usage descriptions in the Info.plist file under dict tag, or with Xcode.
+```xml
+<key>NSPhotoLibraryAddUsageDescription</key>
+<string>Access to photo library to save photos.</string>
+<key>NSPhotoLibraryUsageDescription</key>
+<string>Access to photo library to save photos</string>
+```
