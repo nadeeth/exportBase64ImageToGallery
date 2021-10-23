@@ -14,6 +14,10 @@ npx cap sync
 <docgen-index>
 
 * [`echo(...)`](#echo)
+* [`checkPermissions()`](#checkpermissions)
+* [`requestPermissions()`](#requestpermissions)
+* [`exportImageToGallery(...)`](#exportimagetogallery)
+* [Interfaces](#interfaces)
 
 </docgen-index>
 
@@ -33,5 +37,52 @@ echo(options: { value: string; }) => any
 **Returns:** <code>any</code>
 
 --------------------
+
+
+### checkPermissions()
+
+```typescript
+checkPermissions() => any
+```
+
+**Returns:** <code>any</code>
+
+--------------------
+
+
+### requestPermissions()
+
+```typescript
+requestPermissions() => any
+```
+
+**Returns:** <code>any</code>
+
+--------------------
+
+
+### exportImageToGallery(...)
+
+```typescript
+exportImageToGallery(options: { data: string; }) => any
+```
+
+| Param         | Type                           |
+| ------------- | ------------------------------ |
+| **`options`** | <code>{ data: string; }</code> |
+
+**Returns:** <code>any</code>
+
+--------------------
+
+
+### Interfaces
+
+
+#### PermissionStatus
+
+| Prop          | Type                                                                      |
+| ------------- | ------------------------------------------------------------------------- |
+| **`gallery`** | <code>"prompt" \| "prompt-with-rationale" \| "granted" \| "denied"</code> |
 
 </docgen-api>
