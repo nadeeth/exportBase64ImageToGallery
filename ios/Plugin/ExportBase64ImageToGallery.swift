@@ -33,7 +33,8 @@ import Photos
     
     @objc public func exportImageToGallery(_ call: CAPPluginCall) {
         let string = call.getString("data");
-        let imageData = Data.init(base64Encoded: string!, options: .init(rawValue: 0))
+        let dataArray = string!.components(separatedBy: [","])
+        let imageData = Data.init(base64Encoded: dataArray[1], options: .init(rawValue: 0))
         if let image = UIImage(data: imageData!)
         {
             self.globalCall = call;
