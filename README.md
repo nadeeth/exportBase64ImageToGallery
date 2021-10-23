@@ -87,3 +87,6 @@ Add Photo Libarary usage descriptions in the Info.plist file under dict tag, or 
 <key>NSPhotoLibraryUsageDescription</key>
 <string>Access to photo library to save photos</string>
 ```
+
+## Android
+Still working on Android support. 
