@@ -69,4 +69,12 @@ exportImageToGallery(options: { data: string; }) => any
 | ------------- | ------------------------------------------------------------------------- |
 | **`gallery`** | <code>"prompt" \| "prompt-with-rationale" \| "granted" \| "denied"</code> |
 
+
+#### ExportResponse
+
+| Prop          | Type                 |
+| ------------- | -------------------- |
+| **`success`** | <code>boolean</code> |
+| **`error`**   | <code>string</code>  |
+
 </docgen-api>
