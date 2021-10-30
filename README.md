@@ -89,4 +89,9 @@ Add Photo Libarary usage descriptions in the Info.plist file under dict tag, or 
 ```
 
 ## Android
-Still working on Android support. 
+Add permissions for External Storage in your app's AndroidManifest.xml file.
+```xml
+<!-- Permissions -->
+<uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
+<uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+```
