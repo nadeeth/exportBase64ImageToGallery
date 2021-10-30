@@ -71,8 +71,8 @@ class ExportBase64ImageToGalleryPlugin : Plugin() {
     @PluginMethod
     fun exportImageToGallery(call: PluginCall) {
         val base64String = call.getString("data")
-
-        val imageBytes = Base64.decode(base64String, Base64.DEFAULT)
+        val base64ImageData = base64String?.split(",")?.toTypedArray()
+        val imageBytes = Base64.decode(base64ImageData?.get(1), Base64.DEFAULT)
         val decodedImage = BitmapFactory.decodeByteArray(imageBytes, 0, imageBytes.count())
 
         val ret = JSObject()
