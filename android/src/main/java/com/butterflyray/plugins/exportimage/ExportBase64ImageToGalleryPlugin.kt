@@ -1,29 +1,72 @@
 package com.butterflyray.plugins.exportimage
 
-import android.content.ContentValues
-import android.content.Context
-import android.graphics.Bitmap
+import android.Manifest
+import android.content.pm.PackageManager
 import android.graphics.BitmapFactory
-import android.net.Uri
-import android.os.Environment
-import android.provider.MediaStore
-import android.provider.MediaStore.Images.Media.insertImage
-import android.provider.SyncStateContract.Helpers.insert
 import android.util.Base64
-import com.getcapacitor.JSObject
-import com.getcapacitor.Plugin
-import com.getcapacitor.PluginCall
-import com.getcapacitor.PluginMethod
+import android.util.Log
+import androidx.core.app.ActivityCompat.shouldShowRequestPermissionRationale
+import androidx.core.content.ContextCompat
+import com.getcapacitor.*
 import com.getcapacitor.annotation.CapacitorPlugin
-import java.io.File
-import java.io.File.separator
-import java.io.FileOutputStream
-import java.io.OutputStream
+import com.getcapacitor.annotation.Permission
+import com.getcapacitor.annotation.PermissionCallback
 
-@CapacitorPlugin(name = "ExportBase64ImageToGallery")
+@CapacitorPlugin(
+    name = "ExportBase64ImageToGallery",
+    permissions = [
+        Permission(
+            strings = arrayOf<String>(Manifest.permission.WRITE_EXTERNAL_STORAGE),
+            alias = "gallery"
+        )
+    ]
+)
 class ExportBase64ImageToGalleryPlugin : Plugin() {
 
     private val implementation = ExportBase64ImageToGallery()
+
+    @PluginMethod
+    override fun checkPermissions(call: PluginCall) {
+        val ret = JSObject()
+        when {
+            ContextCompat.checkSelfPermission(
+                    context,
+                    Manifest.permission.WRITE_EXTERNAL_STORAGE
+            ) == PackageManager.PERMISSION_GRANTED -> {
+                // You can use the API that requires the permission.
+                ret.put("gallery", PermissionState.GRANTED)
+            }
+            shouldShowRequestPermissionRationale(activity, Manifest.permission.WRITE_EXTERNAL_STORAGE) -> {
+                ret.put("gallery", PermissionState.PROMPT_WITH_RATIONALE)
+            }
+            else -> {
+                ret.put("gallery", PermissionState.PROMPT)
+            }
+        }
+        call.resolve(ret)
+    }
+
+    @PluginMethod
+    override fun requestPermissions(call: PluginCall) {
+        requestAllPermissions(call, "requestPermissionsCallback");
+    }
+
+    @PermissionCallback
+    fun requestPermissionsCallback(pluginCall: PluginCall) {
+        val permissionsResult =
+            permissionStates
+        Log.i("PERMISSION", permissionsResult.toString())
+        if (permissionsResult.isEmpty()) {
+            // if no permissions are defined on the plugin, resolve undefined
+            pluginCall.resolve()
+        } else {
+            val permissionsResultJSON = JSObject()
+            for ((key, value) in permissionsResult) {
+                permissionsResultJSON.put(key, value)
+            }
+            pluginCall.resolve(permissionsResultJSON)
+        }
+    }
 
     @PluginMethod
     fun exportImageToGallery(call: PluginCall) {
