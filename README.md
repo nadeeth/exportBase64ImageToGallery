@@ -95,3 +95,44 @@ Add permissions for External Storage in your app's AndroidManifest.xml file.
 <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
 <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
 ```
+
+## Example
+This example is using TypeScript, but you can use this plugin in any Capacitor project. 
+
+1. Import the plugin and response types.
+```typescript
+import { ExportBase64ImageToGallery, GalleryExportResponse, GalleryPermissionStatus } from 'export-base64-image-to-gallery';
+```
+
+2. Implementation. 
+```typescript
+const base64Image: string = "data:image/jpeg;base64,/9j/4AAQSkZJRgABAQEAYABgAA.........";
+let exportStatus: GalleryExportResponse;
+
+const currentPermissionStatus: GalleryPermissionStatus = await ExportBase64ImageToGallery.checkPermissions();
+if (currentPermissionStatus.gallery === 'prompt' || currentPermissionStatus.gallery === 'prompt-with-rationale') {
+    // Consider providing an explanation to the user for 'prompt-with-rationale' case.
+    const requestedPermissionStatus: GalleryPermissionStatus = await ExportBase64ImageToGallery.requestPermissions();
+    if (requestedPermissionStatus.gallery === 'granted') {
+    exportStatus = await ExportBase64ImageToGallery.exportImageToGallery({data: base64Image});
+    } else {
+    // Show a message to the user indicating the app can't export image without permission.
+    // If they want to use the feature they have to allow permission in device settings.
+    console.log('Gallery Export permission denied at prompt:', requestedPermissionStatus);
+    }
+} else if (currentPermissionStatus.gallery === 'denied') {
+    // Show a message to the user explaining they have denied access before.
+    // Enalbe it in settings if they want to use the feature.
+    console.log('Gallery Export permission denied already:', currentPermissionStatus);
+} else if (currentPermissionStatus.gallery === 'granted') {
+    exportStatus = await ExportBase64ImageToGallery.exportImageToGallery({data: base64Image});
+}
+
+if (exportStatus.success === true) {
+    // Export successful - Show a success message
+    console.log('Export success:', exportStatus);
+} else {
+    // Export failed - 
+    console.log('Export failed with error:', exportStatus.error);
+}
+``` 
