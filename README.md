@@ -26,10 +26,10 @@ npx cap sync
 ### checkPermissions()
 
 ```typescript
-checkPermissions() => any
+checkPermissions() => Promise<PermissionStatus>
 ```
 
-**Returns:** <code>any</code>
+**Returns:** <code>Promise&lt;PermissionStatus&gt;</code>
 
 --------------------
 
@@ -37,10 +37,10 @@ checkPermissions() => any
 ### requestPermissions()
 
 ```typescript
-requestPermissions() => any
+requestPermissions() => Promise<PermissionStatus>
 ```
 
-**Returns:** <code>any</code>
+**Returns:** <code>Promise&lt;PermissionStatus&gt;</code>
 
 --------------------
 
@@ -48,14 +48,14 @@ requestPermissions() => any
 ### exportImageToGallery(...)
 
 ```typescript
-exportImageToGallery(options: { data: string; }) => any
+exportImageToGallery(options: { data: string; }) => Promise<ExportResponse>
 ```
 
 | Param         | Type                           |
 | ------------- | ------------------------------ |
 | **`options`** | <code>{ data: string; }</code> |
 
-**Returns:** <code>any</code>
+**Returns:** <code>Promise&lt;ExportResponse&gt;</code>
 
 --------------------
 
