@@ -1,14 +1,14 @@
 import type { PermissionState } from '@capacitor/core';
 
-export interface PermissionStatus {
+export interface GalleryPermissionStatus {
   gallery: PermissionState;
 }
-export interface ExportResponse {
+export interface GalleryExportResponse {
   success: boolean,
   error: string
 }
 export interface ExportBase64ImageToGalleryPlugin {
-  checkPermissions(): Promise<PermissionStatus>;
-  requestPermissions(): Promise<PermissionStatus>;
-  exportImageToGallery(options: { data: string }): Promise<ExportResponse>;
+  checkPermissions(): Promise<GalleryPermissionStatus>;
+  requestPermissions(): Promise<GalleryPermissionStatus>;
+  exportImageToGallery(options: { data: string }): Promise<GalleryExportResponse>;
 }

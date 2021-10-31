@@ -26,10 +26,10 @@ npx cap sync
 ### checkPermissions()
 
 ```typescript
-checkPermissions() => Promise<PermissionStatus>
+checkPermissions() => Promise<GalleryPermissionStatus>
 ```
 
-**Returns:** <code>Promise&lt;PermissionStatus&gt;</code>
+**Returns:** <code>Promise&lt;GalleryPermissionStatus&gt;</code>
 
 --------------------
 
@@ -37,10 +37,10 @@ checkPermissions() => Promise<PermissionStatus>
 ### requestPermissions()
 
 ```typescript
-requestPermissions() => Promise<PermissionStatus>
+requestPermissions() => Promise<GalleryPermissionStatus>
 ```
 
-**Returns:** <code>Promise&lt;PermissionStatus&gt;</code>
+**Returns:** <code>Promise&lt;GalleryPermissionStatus&gt;</code>
 
 --------------------
 
@@ -48,14 +48,14 @@ requestPermissions() => Promise<PermissionStatus>
 ### exportImageToGallery(...)
 
 ```typescript
-exportImageToGallery(options: { data: string; }) => Promise<ExportResponse>
+exportImageToGallery(options: { data: string; }) => Promise<GalleryExportResponse>
 ```
 
 | Param         | Type                           |
 | ------------- | ------------------------------ |
 | **`options`** | <code>{ data: string; }</code> |
 
-**Returns:** <code>Promise&lt;ExportResponse&gt;</code>
+**Returns:** <code>Promise&lt;GalleryExportResponse&gt;</code>
 
 --------------------
 
@@ -63,14 +63,14 @@ exportImageToGallery(options: { data: string; }) => Promise<ExportResponse>
 ### Interfaces
 
 
-#### PermissionStatus
+#### GalleryPermissionStatus
 
 | Prop          | Type                                                                      |
 | ------------- | ------------------------------------------------------------------------- |
 | **`gallery`** | <code>"prompt" \| "prompt-with-rationale" \| "granted" \| "denied"</code> |
 
 
-#### ExportResponse
+#### GalleryExportResponse
 
 | Prop          | Type                 |
 | ------------- | -------------------- |
