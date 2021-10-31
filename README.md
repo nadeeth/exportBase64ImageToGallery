@@ -114,11 +114,11 @@ if (currentPermissionStatus.gallery === 'prompt' || currentPermissionStatus.gall
     // Consider providing an explanation to the user for 'prompt-with-rationale' case.
     const requestedPermissionStatus: GalleryPermissionStatus = await ExportBase64ImageToGallery.requestPermissions();
     if (requestedPermissionStatus.gallery === 'granted') {
-    exportStatus = await ExportBase64ImageToGallery.exportImageToGallery({data: base64Image});
+        exportStatus = await ExportBase64ImageToGallery.exportImageToGallery({data: base64Image});
     } else {
-    // Show a message to the user indicating the app can't export image without permission.
-    // If they want to use the feature they have to allow permission in device settings.
-    console.log('Gallery Export permission denied at prompt:', requestedPermissionStatus);
+        // Show a message to the user indicating the app can't export image without permission.
+        // If they want to use the feature they have to allow permission in device settings.
+        console.log('Gallery Export permission denied at prompt:', requestedPermissionStatus);
     }
 } else if (currentPermissionStatus.gallery === 'denied') {
     // Show a message to the user explaining they have denied access before.
