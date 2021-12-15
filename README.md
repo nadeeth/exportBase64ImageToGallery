@@ -105,6 +105,7 @@ import { ExportBase64ImageToGallery, GalleryExportResponse, GalleryPermissionSta
 ```
 
 2. Implementation. 
+This is a full code example that covers all the plugin methods. Consider deviding this into two or more methods in a real implementation. 
 ```typescript
 const base64Image: string = "data:image/jpeg;base64,/9j/4AAQSkZJRgABAQEAYABgAA.........";
 let exportStatus: GalleryExportResponse;
