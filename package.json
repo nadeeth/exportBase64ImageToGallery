@@ -25,7 +25,16 @@
   "keywords": [
     "capacitor",
     "plugin",
-    "native"
+    "native",
+    "base64",
+    "base 64",
+    "export",
+    "image",
+    "gallery",
+    "photos",
+    "ionic",
+    "ios",
+    "android"
   ],
   "scripts": {
     "verify": "npm run verify:ios && npm run verify:android && npm run verify:web",
