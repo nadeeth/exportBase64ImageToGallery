@@ -1,6 +1,6 @@
 {
   "name": "export-base64-image-to-gallery",
-  "version": "1.1.0",
+  "version": "7.0.0",
   "description": "A Capacitor plugin to export base64 encoded images to device gallery.",
   "main": "dist/plugin.cjs.js",
   "module": "dist/esm/index.js",
