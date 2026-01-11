@@ -17,6 +17,7 @@ npx cap sync
 * [`requestPermissions()`](#requestpermissions)
 * [`exportImageToGallery(...)`](#exportimagetogallery)
 * [Interfaces](#interfaces)
+* [Type Aliases](#type-aliases)
 
 </docgen-index>
 
@@ -29,7 +30,7 @@ npx cap sync
 checkPermissions() => Promise<GalleryPermissionStatus>
 ```
 
-**Returns:** <code>Promise&lt;GalleryPermissionStatus&gt;</code>
+**Returns:** <code>Promise&lt;<a href="#gallerypermissionstatus">GalleryPermissionStatus</a>&gt;</code>
 
 --------------------
 
@@ -40,7 +41,7 @@ checkPermissions() => Promise<GalleryPermissionStatus>
 requestPermissions() => Promise<GalleryPermissionStatus>
 ```
 
-**Returns:** <code>Promise&lt;GalleryPermissionStatus&gt;</code>
+**Returns:** <code>Promise&lt;<a href="#gallerypermissionstatus">GalleryPermissionStatus</a>&gt;</code>
 
 --------------------
 
@@ -55,7 +56,7 @@ exportImageToGallery(options: { data: string; }) => Promise<GalleryExportRespons
 | ------------- | ------------------------------ |
 | **`options`** | <code>{ data: string; }</code> |
 
-**Returns:** <code>Promise&lt;GalleryExportResponse&gt;</code>
+**Returns:** <code>Promise&lt;<a href="#galleryexportresponse">GalleryExportResponse</a>&gt;</code>
 
 --------------------
 
@@ -65,9 +66,9 @@ exportImageToGallery(options: { data: string; }) => Promise<GalleryExportRespons
 
 #### GalleryPermissionStatus
 
-| Prop          | Type                                                                      |
-| ------------- | ------------------------------------------------------------------------- |
-| **`gallery`** | <code>"prompt" \| "prompt-with-rationale" \| "granted" \| "denied"</code> |
+| Prop          | Type                                                        |
+| ------------- | ----------------------------------------------------------- |
+| **`gallery`** | <code><a href="#permissionstate">PermissionState</a></code> |
 
 
 #### GalleryExportResponse
@@ -76,6 +77,14 @@ exportImageToGallery(options: { data: string; }) => Promise<GalleryExportRespons
 | ------------- | -------------------- |
 | **`success`** | <code>boolean</code> |
 | **`error`**   | <code>string</code>  |
+
+
+### Type Aliases
+
+
+#### PermissionState
+
+<code>'prompt' | 'prompt-with-rationale' | 'granted' | 'denied'</code>
 
 </docgen-api>
 
